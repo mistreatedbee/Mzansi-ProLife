@@ -18,6 +18,9 @@ import QuestionCommentForm from '@/components/questionnaire/QuestionCommentForm'
 import OutreachForm from '@/components/questionnaire/OutreachForm';
 import AgentRequestForm from '@/components/questionnaire/AgentRequestForm';
 
+// FIX: Define a type for the form options to ensure type safety when indexing formTitles
+type FormOption = keyof typeof formTitles;
+
 const formTitles = {
   ambassador: 'Become a Social Change Ambassador',
   product_order: 'Order / Buy Products',
@@ -34,7 +37,8 @@ export default function Questionnaire() {
   const preselectedType = searchParams.get('type');
   
   const [step, setStep] = useState(preselectedType ? 2 : 1);
-  const [selectedOption, setSelectedOption] = useState(preselectedType || '');
+  // FIX: Type selectedOption as FormOption (union of keys) to allow safe indexing of formTitles
+  const [selectedOption, setSelectedOption] = useState<FormOption | ''>(preselectedType as FormOption || '');
   const [formData, setFormData] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [referenceNumber, setReferenceNumber] = useState('');
@@ -42,7 +46,7 @@ export default function Questionnaire() {
 
   useEffect(() => {
     if (preselectedType) {
-      setSelectedOption(preselectedType);
+      setSelectedOption(preselectedType as FormOption);  // FIX: Cast to FormOption for safety
       setStep(2);
     }
   }, [preselectedType]);
@@ -54,11 +58,13 @@ export default function Questionnaire() {
     return `${prefix}-${timestamp}-${random}`;
   };
 
-  const handleOptionSelect = (option) => {
+  // FIX: Add explicit type for 'option' (string, matching FormOption)
+  const handleOptionSelect = (option: FormOption) => {
     setSelectedOption(option);
   };
 
-  const handleFormChange = (name, value) => {
+  // FIX: Add explicit types for 'name' and 'value' (strings, common for form handling)
+  const handleFormChange = (name: string, value: string) => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
@@ -223,6 +229,7 @@ export default function Questionnaire() {
               <div className="bg-white rounded-3xl shadow-xl p-8 sm:p-10">
                 <div className="mb-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                    {/* FIX: Now safe to index formTitles with selectedOption (typed as FormOption) */}
                     {formTitles[selectedOption]}
                   </h2>
                   <p className="text-gray-500">
