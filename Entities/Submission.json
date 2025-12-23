@@ -1,0 +1,188 @@
+{
+  "name": "Submission",
+  "type": "object",
+  "properties": {
+    "submission_type": {
+      "type": "string",
+      "enum": [
+        "ambassador",
+        "product_order",
+        "advertise",
+        "donate",
+        "job_application",
+        "question_comment",
+        "outreach_participation",
+        "agent_request"
+      ],
+      "description": "Type of submission from the 8 questionnaire options"
+    },
+    "reference_number": {
+      "type": "string",
+      "description": "Unique reference number for tracking"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "new",
+        "in_progress",
+        "contacted",
+        "completed",
+        "cancelled"
+      ],
+      "default": "new"
+    },
+    "full_name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "id_number": {
+      "type": "string"
+    },
+    "address": {
+      "type": "string"
+    },
+    "city": {
+      "type": "string"
+    },
+    "postal_code": {
+      "type": "string"
+    },
+    "branch_location": {
+      "type": "string"
+    },
+    "motivation": {
+      "type": "string"
+    },
+    "areas_of_interest": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "availability": {
+      "type": "string"
+    },
+    "id_document_url": {
+      "type": "string"
+    },
+    "selfie_url": {
+      "type": "string"
+    },
+    "cv_url": {
+      "type": "string"
+    },
+    "proof_of_payment_url": {
+      "type": "string"
+    },
+    "donation_amount": {
+      "type": "number"
+    },
+    "donation_type": {
+      "type": "string",
+      "enum": [
+        "once_off",
+        "monthly",
+        "project_specific"
+      ]
+    },
+    "project_allocation": {
+      "type": "string"
+    },
+    "company_name": {
+      "type": "string"
+    },
+    "company_registration": {
+      "type": "string"
+    },
+    "industry": {
+      "type": "string"
+    },
+    "ad_type": {
+      "type": "string"
+    },
+    "budget_range": {
+      "type": "string"
+    },
+    "position_applied": {
+      "type": "string"
+    },
+    "qualifications": {
+      "type": "string"
+    },
+    "experience": {
+      "type": "string"
+    },
+    "salary_expectation": {
+      "type": "string"
+    },
+    "message_category": {
+      "type": "string"
+    },
+    "message_type": {
+      "type": "string",
+      "enum": [
+        "question",
+        "suggestion",
+        "complaint",
+        "praise"
+      ]
+    },
+    "message": {
+      "type": "string"
+    },
+    "contact_preference": {
+      "type": "string"
+    },
+    "age_group": {
+      "type": "string"
+    },
+    "outreach_project": {
+      "type": "string"
+    },
+    "role_interest": {
+      "type": "string"
+    },
+    "skills_to_contribute": {
+      "type": "string"
+    },
+    "transportation_needs": {
+      "type": "string"
+    },
+    "emergency_contact": {
+      "type": "string"
+    },
+    "urgent_reason": {
+      "type": "string"
+    },
+    "preferred_contact_method": {
+      "type": "string"
+    },
+    "best_time_to_contact": {
+      "type": "string"
+    },
+    "brief_description": {
+      "type": "string"
+    },
+    "products_ordered": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "assigned_to": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "submission_type",
+    "reference_number"
+  ]
+}
